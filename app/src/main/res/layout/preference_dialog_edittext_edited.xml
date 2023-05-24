@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-  ntfy EDIT:
+  br.com.smbstore.ntfy EDIT:
     This is a slightly edited copy of the original Android project layout
     to reduce the marginBottom of the message to something reasonable (was: 48dp).
 
