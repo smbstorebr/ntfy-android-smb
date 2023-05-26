@@ -11,11 +11,11 @@ android {
 
     defaultConfig {
         applicationId 'br.com.smbstore.ntfy'
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 33
 
         versionCode 33
-        versionName "1.17.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
@@ -130,4 +130,7 @@ dependencies {
 
     // Image viewer
     implementation 'com.github.stfalcon-studio:StfalconImageViewer:v1.0.1'
+
+    // Zxing QRcode Reader
+    implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
 }

@@ -27,9 +27,13 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import androidx.work.*
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.work.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import br.com.smbstore.ntfy.BuildConfig
+import br.com.smbstore.ntfy.R
 import br.com.smbstore.ntfy.app.Application
 import br.com.smbstore.ntfy.db.Repository
 import br.com.smbstore.ntfy.db.Subscription
@@ -40,14 +44,23 @@ import br.com.smbstore.ntfy.msg.DownloadType
 import br.com.smbstore.ntfy.msg.NotificationDispatcher
 import br.com.smbstore.ntfy.service.SubscriberService
 import br.com.smbstore.ntfy.service.SubscriberServiceManager
-import br.com.smbstore.ntfy.util.*
+import br.com.smbstore.ntfy.util.Log
+import br.com.smbstore.ntfy.util.dangerButton
+import br.com.smbstore.ntfy.util.displayName
+import br.com.smbstore.ntfy.util.fadeStatusBarColor
+import br.com.smbstore.ntfy.util.formatDateShort
+import br.com.smbstore.ntfy.util.isIgnoringBatteryOptimizations
+import br.com.smbstore.ntfy.util.maybeSplitTopicUrl
+import br.com.smbstore.ntfy.util.randomSubscriptionId
+import br.com.smbstore.ntfy.util.shortUrl
+import br.com.smbstore.ntfy.util.topicShortUrl
 import br.com.smbstore.ntfy.work.DeleteWorker
 import br.com.smbstore.ntfy.work.PollWorker
-import br.com.smbstore.ntfy.R
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import java.util.*
+import java.util.Date
 import java.util.concurrent.TimeUnit
 import kotlin.random.Random
 
@@ -212,6 +225,11 @@ class MainActivity : AppCompatActivity(), ActionMode.Callback, AddFragment.Subsc
 
         // Permissions
         maybeRequestNotificationPermission()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        // This is important, otherwise the result will not be passed to the fragment
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun maybeRequestNotificationPermission() {

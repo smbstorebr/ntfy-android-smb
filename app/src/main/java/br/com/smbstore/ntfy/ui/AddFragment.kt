@@ -4,23 +4,37 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.AutoCompleteTextView
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import br.com.smbstore.ntfy.BuildConfig
 import br.com.smbstore.ntfy.R
 import br.com.smbstore.ntfy.db.Repository
 import br.com.smbstore.ntfy.db.User
 import br.com.smbstore.ntfy.msg.ApiService
-import br.com.smbstore.ntfy.util.*
+import br.com.smbstore.ntfy.util.AfterChangedTextWatcher
+import br.com.smbstore.ntfy.util.Log
+import br.com.smbstore.ntfy.util.makeEndIconSmaller
+import br.com.smbstore.ntfy.util.shortUrl
+import br.com.smbstore.ntfy.util.topicUrl
+import br.com.smbstore.ntfy.util.validTopic
+import br.com.smbstore.ntfy.util.validUrl
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import android.widget.Toast
+
 
 class AddFragment : DialogFragment() {
     private val api = ApiService()
@@ -160,7 +174,7 @@ class AddFragment : DialogFragment() {
         // Add logic to disable "Subscribe" button on invalid input
         dialog.setOnShowListener {
             positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-            positiveButton.isEnabled = false
+            positiveButton.isEnabled = true
             positiveButton.setOnClickListener {
                 positiveButtonClick()
             }
@@ -179,7 +193,7 @@ class AddFragment : DialogFragment() {
             subscribeUseAnotherServerCheckbox.setOnCheckedChangeListener { _, _ ->
                 validateInputSubscribeView()
             }
-            validateInputSubscribeView()
+            //validateInputSubscribeView()
 
             // Focus topic text (keyboard is shown too, see above)
             subscribeTopicText.requestFocus()
@@ -189,12 +203,26 @@ class AddFragment : DialogFragment() {
     }
 
     private fun positiveButtonClick() {
-        val topic = subscribeTopicText.text.toString()
-        val baseUrl = getBaseUrl()
-        if (subscribeView.visibility == View.VISIBLE) {
-            checkReadAndMaybeShowLogin(baseUrl, topic)
-        } else if (loginView.visibility == View.VISIBLE) {
-            loginAndMaybeDismiss(baseUrl, topic)
+        val intentIntegrator = IntentIntegrator.forSupportFragment(this)
+        intentIntegrator.setPrompt("Ler QR Code")
+        intentIntegrator.setOrientationLocked(true)
+        intentIntegrator.initiateScan()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        val result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+        if (result != null) {
+            if (result.contents == null) {
+                Toast.makeText(context, "Cancelado", Toast.LENGTH_SHORT).show()
+                Log.e("Fragment", "Cancelado a leitura")
+            } else {
+                Log.d("Fragment", "Lido com sucesso")
+                val baseUrl = getBaseUrl()
+                checkReadAndMaybeShowLogin(baseUrl, result.contents)
+                //loginAndMaybeDismiss(baseUrl, result.contents)
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data)
         }
     }
 
