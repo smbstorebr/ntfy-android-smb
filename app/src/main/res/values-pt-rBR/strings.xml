@@ -212,7 +212,7 @@
     <string name="main_how_to_intro">Clique no botão + para assinar uma notificação. Acesse o sistema SMB Store, no menu lateral acesse Meu Sistema > Mensagens Push.</string>
     <string name="main_banner_battery_button_remind_later">Perguntar depois</string>
     <string name="main_banner_battery_button_dismiss">Dispensar</string>
-    <string name="add_dialog_button_subscribe">Inscrever-se</string>
+    <string name="add_dialog_button_subscribe">Ler QR Code</string>
     <string name="main_banner_battery_button_fix_now">Consertar agora</string>
     <string name="add_dialog_instant_delivery">Entrega instantânea em modo soneca</string>
     <string name="add_dialog_button_cancel">Cancelar</string>

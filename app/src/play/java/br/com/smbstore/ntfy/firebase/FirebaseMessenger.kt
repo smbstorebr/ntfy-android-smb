@@ -1,7 +1,7 @@
 package br.com.smbstore.ntfy.firebase
 
+import android.util.Log
 import com.google.firebase.messaging.FirebaseMessaging
-import br.com.smbstore.util.Log
 
 class FirebaseMessenger {
     fun subscribe(topic: String) {
