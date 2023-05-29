@@ -29,21 +29,21 @@
     <string name="refresh_message_error">Não foi possível atualizar %1$d inscrições
 \n
 \n%2$s</string>
-    <string name="main_action_bar_title">Temas inscritos</string>
+    <string name="main_action_bar_title">Notificações inscritas</string>
     <string name="main_menu_notifications_disabled_until">Notificações silenciadas até %1$s</string>
     <string name="main_menu_rate_title">Avalie o aplicativo ⭐</string>
     <string name="main_action_mode_delete_dialog_message">Cancelar inscrição dos tópicos selecionados e remover permanentemente todas notificações\?</string>
     <string name="main_action_mode_delete_dialog_permanently_delete">Remover permanentemente</string>
     <string name="main_action_mode_delete_dialog_cancel">Cancelar</string>
     <string name="main_item_date_yesterday">ontem</string>
-    <string name="main_add_button_description">Inscrever-se</string>
+    <string name="main_add_button_description">Ler QR Code</string>
     <string name="main_no_subscriptions_text">Parece que você não tem nenhuma inscrição ainda.</string>
-    <string name="main_how_to_link">Instruções detalhadas disponíveis em ntfy.sh, e na documentação.</string>
+    <string name="main_how_to_link">Leia os QR Codes disponíveis para acessar diversas notificações no sistema.</string>
     <string name="main_banner_battery_text">O modo Economia de Energia deve estar desligado para evitar problemas de entrega de notificação no aplicativo.</string>
     <string name="main_item_status_unified_push">%1$s(UnifiedPush)</string>
     <string name="main_banner_websocket_button_remind_later">Perguntar depois</string>
     <string name="main_banner_websocket_button_dismiss">Dispensar</string>
-    <string name="add_dialog_title">Inscrever-se no tema</string>
+    <string name="add_dialog_title">Assinar notificação</string>
     <string name="add_dialog_description_below">Temas podem não ser protegidos por senha, escolha um nome difícil de adivinhar. Uma vez inscrito, você pode usar as notificações PUT/POST.</string>
     <string name="add_dialog_topic_name_hint">Nome do tema, ex: alertas_jose</string>
     <string name="add_dialog_use_another_server">Usar outro servidor</string>
@@ -209,7 +209,7 @@
     <string name="main_action_mode_menu_unsubscribe">Cancelar inscrição</string>
     <string name="main_unified_push_toast">Essa inscrição é gerenciada por %1$s via UnifiedPush</string>
     <string name="main_item_status_text_not_one">%1$d notificações</string>
-    <string name="main_how_to_intro">Clique no + para criar ou inscrever-se em um tópico. Em seguida você receberá notificações no seu dispositivo ao enviar mensagens via PUT ou POST.</string>
+    <string name="main_how_to_intro">Clique no botão + para assinar uma notificação. Acesse o sistema SMB Store, no menu lateral acesse Meu Sistema > Mensagens Push.</string>
     <string name="main_banner_battery_button_remind_later">Perguntar depois</string>
     <string name="main_banner_battery_button_dismiss">Dispensar</string>
     <string name="add_dialog_button_subscribe">Inscrever-se</string>
