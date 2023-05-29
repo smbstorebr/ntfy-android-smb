@@ -35,7 +35,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import android.widget.Toast
 
-
 class AddFragment : DialogFragment() {
     private val api = ApiService()
 
@@ -71,7 +70,7 @@ class AddFragment : DialogFragment() {
     private lateinit var loginErrorTextImage: View
 
     interface SubscribeListener {
-        fun onSubscribe(topic: String, baseUrl: String, instant: Boolean)
+        fun onSubscribe(topic: String, baseUrl: String, instant: Boolean, displayName: String?)
     }
 
     override fun onAttach(context: Context) {
@@ -218,6 +217,7 @@ class AddFragment : DialogFragment() {
             } else {
                 Log.d("Fragment", "Lido com sucesso")
                 val baseUrl = getBaseUrl()
+                subscribeTopicText.setText(result.contents)
                 checkReadAndMaybeShowLogin(baseUrl, result.contents)
                 //loginAndMaybeDismiss(baseUrl, result.contents)
             }
@@ -382,10 +382,20 @@ class AddFragment : DialogFragment() {
         Log.d(TAG, "Closing dialog and calling onSubscribe handler")
         val activity = activity?: return // We may have pressed "Cancel"
         activity.runOnUiThread {
-            val topic = subscribeTopicText.text.toString()
+            val scanValue = subscribeTopicText.text.toString()
+            val values: List<String> = scanValue.split('@')
+            var topic = ""
+            var displayName: String? = null
+            if (values.count() > 1){
+                topic = values[0]
+                displayName = values[1]
+            } else {
+                topic = scanValue
+            }
+
             val baseUrl = getBaseUrl()
             val instant = !BuildConfig.FIREBASE_AVAILABLE || baseUrl != appBaseUrl || subscribeInstantDeliveryCheckbox.isChecked
-            subscribeListener.onSubscribe(topic, baseUrl, instant)
+            subscribeListener.onSubscribe(topic, baseUrl, instant, displayName)
             dialog?.dismiss()
         }
     }
