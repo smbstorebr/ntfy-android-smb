@@ -12,9 +12,9 @@ android {
     defaultConfig {
         applicationId 'br.com.smbstore.ntfy'
         minSdkVersion 24
-        targetSdkVersion 33
+        targetSdk 33
 
-        versionCode 33
+        versionCode 100
         versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -54,12 +54,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility "11"
+        targetCompatibility "11"
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = "11"
         freeCompilerArgs += [
             '-Xjvm-default=all-compatibility' // https://stackoverflow.com/a/71234042/1440785
         ]
@@ -132,5 +132,5 @@ dependencies {
     implementation 'com.github.stfalcon-studio:StfalconImageViewer:v1.0.1'
 
     // Zxing QRcode Reader
-    implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
 }
