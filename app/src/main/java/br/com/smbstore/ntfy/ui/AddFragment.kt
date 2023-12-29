@@ -386,7 +386,7 @@ class AddFragment : DialogFragment() {
             val values: List<String> = scanValue.split('@')
             var topic = ""
             var displayName: String? = null
-            if (values.count() > 1){
+            if (values.count() == 2){
                 topic = values[0]
                 displayName = values[1]
             } else {
