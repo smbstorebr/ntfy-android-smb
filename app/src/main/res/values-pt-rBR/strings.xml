@@ -209,7 +209,7 @@
     <string name="main_action_mode_menu_unsubscribe">Cancelar inscrição</string>
     <string name="main_unified_push_toast">Essa inscrição é gerenciada por %1$s via UnifiedPush</string>
     <string name="main_item_status_text_not_one">%1$d notificações</string>
-    <string name="main_how_to_intro">Clique no botão + para assinar uma notificação. Acesse o sistema SMB Store, no menu lateral acesse Meu Sistema > Mensagens Push.</string>
+    <string name="main_how_to_intro">Clique no botão + para assinar uma notificação. Acesse o sistema SMB Store, no menu lateral, acesse a Loja de Aplicativos. Nela, assine o aplicativo "App de Notificações". Em seguida, no menu lateral acesse Aplicativos > App de notificações do sistema. Siga as instruções contidas nessa tela..</string>
     <string name="main_banner_battery_button_remind_later">Perguntar depois</string>
     <string name="main_banner_battery_button_dismiss">Dispensar</string>
     <string name="add_dialog_button_subscribe">Ler QR Code</string>
@@ -221,7 +221,7 @@
     <string name="add_dialog_login_password_hint">Senha</string>
     <string name="add_dialog_login_description">Esse tema requer login. Insira um nome de usuário e senha.</string>
     <string name="detail_item_snack_deleted">Notificação removida</string>
-    <string name="detail_how_to_intro">Para enviar notificações para esse tema, basta usar os métodos PUT ou POST na URL do tema.</string>
+    <string name="detail_how_to_intro">Assim que novas notificações sobre este tema chegarem, elas aparecerão aqui.</string>
     <string name="detail_how_to_link">Instruções detalhadas disponíveis em ntfy.sh e na documentação.</string>
     <string name="detail_clear_dialog_cancel">Cancelar</string>
     <string name="detail_delete_dialog_permanently_delete">Apagar permanentemente</string>
