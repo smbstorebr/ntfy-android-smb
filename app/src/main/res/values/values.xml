@@ -4,7 +4,7 @@
          The translatable="false" attribute is just an additional safety. -->
 
     <!-- Main app constants -->
-    <string name="app_name" translatable="false">SMB Notifier</string>
+    <string name="app_name" translatable="false">SMB Notificações</string>
     <string name="app_base_url" translatable="false">https://push.smbstore.com.br:8090</string> <!-- If changed, you must also change google-services.json! -->
 
     <!-- Main activity -->
